@@ -1,0 +1,55 @@
+# quickconsole.py
+# Template for Scrapland QuickConsole modding
+# Drop this into the Scrapland scripts folder and compile to .pyc
+
+# Import any required modules (Scrapland usually exposes its own API)
+import sys
+
+# Define a dictionary of custom commands
+COMMANDS = {
+    "godmode": "Enable invulnerability",
+    "money": "Give player credits",
+    "spawnship": "Spawn a specific ship",
+    "teleport": "Teleport to coordinates",
+}
+
+def run_command(cmd, *args):
+    """
+    Executes a QuickConsole command.
+    cmd: string command name
+    args: optional arguments
+    """
+    if cmd == "godmode":
+        # Example: toggle invulnerability
+        print("Godmode activated!")
+        # Insert Scrapland API call here
+
+    elif cmd == "money":
+        amount = int(args[0]) if args else 1000
+        print(f"Added {amount} credits!")
+        # Insert Scrapland API call here
+
+    elif cmd == "spawnship":
+        ship_name = args[0] if args else "default_ship"
+        print(f"Spawning ship: {ship_name}")
+        # Insert Scrapland API call here
+
+    elif cmd == "teleport":
+        if len(args) == 3:
+            x, y, z = map(float, args)
+            print(f"Teleporting to {x}, {y}, {z}")
+            # Insert Scrapland API call here
+        else:
+            print("Usage: teleport <x> <y> <z>")
+
+    else:
+        print(f"Unknown command: {cmd}")
+
+# Entry point for Scrapland QuickConsole
+def main():
+    print("QuickConsole template loaded.")
+    # Example: run a test command
+    run_command("godmode")
+
+if __name__ == "__main__":
+    main()
